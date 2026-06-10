@@ -11,7 +11,7 @@ public class Calculation {
     }
 
     public double netSalaryWithPromotion() {
-        return netSalary() + (promotion / 100 * netSalary());
+        return grossSalary + (promotion / 100 * grossSalary);
     }
 
 }
