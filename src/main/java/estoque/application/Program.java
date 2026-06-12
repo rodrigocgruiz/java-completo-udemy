@@ -6,54 +6,45 @@ import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
+
+        System.out.println("Welcome to Stock System");
         Scanner sc = new Scanner(System.in);
-        String option = "start";
 
-        System.out.println("Welcome toStock System");
+        System.out.println("Enter product data.");
+        System.out.print("Name: ");
+        String name = sc.nextLine();
 
-        while (!option.equalsIgnoreCase("exit")) {
-            Product product = new Product();
+        System.out.print("Price: ");
+        double price = sc.nextDouble();
+        sc.nextLine();
 
-            System.out.println("Enter product data or 'exit' to finish system: ");
-            System.out.print("Name: ");
-            product.name = sc.nextLine();
+        Product product = new Product(name, price);
 
-            if (product.name.equalsIgnoreCase("exit")) {
-                option = "exit";
-                break;
-            }
+        product.setName("Computer");
+        System.out.println("Update name: " + product.getName());
 
-            System.out.print("Price: ");
-            product.price = sc.nextDouble();
-            sc.nextLine();
+        product.setPrice(1200);
+        System.out.println("Update price: $" + product.getPrice());
 
-            System.out.print("Quantity in Stock: ");
-            product.quantityInStock = sc.nextInt();
-            sc.nextLine();
+        System.out.println("Update quantity in stock: " + product.getQuantityInStock());
 
-            System.out.println("Do you want to add or remove products? (add/remove) or exit: ");
-            String action = sc.nextLine();
+        System.out.println("Product data: " + product);
 
-            if (action.equalsIgnoreCase("exit")) {
-                option = "exit";
-                break;
-            }else if (action.equalsIgnoreCase("add")) {
-                System.out.print("Enter the number of products to add: ");
-                int quantity = sc.nextInt();
-                sc.nextLine();
+        System.out.println("Do you want to add products? ");
+        System.out.print("Enter the number of products to add: ");
+        int quantity = sc.nextInt();
 
-                product.addProducts(quantity);
-                System.out.println(product);
+        product.addProducts(quantity);
+        System.out.println(product);
 
-            }else if (action.equalsIgnoreCase("remove")) {
-                System.out.print("Enter the number of products to remove: ");
-                int quantity = sc.nextInt();
-                sc.nextLine();
+        System.out.println("Do you want to remove products? ");
+        System.out.print("Enter the number of products to remove: ");
+        quantity = sc.nextInt();
+        sc.nextLine();
 
-                product.removeProducts(quantity);
-                System.out.println(product);
-            }
-        }
+        product.removeProducts(quantity);
+        System.out.println(product);
+
         sc.close();
     }
 }
